@@ -21,6 +21,7 @@ export class MemberListComponent implements OnInit {
 
   constructor(private memberService: MembersService) {
     this.userParams = this.memberService.getUserParams();
+    console.log(this.userParams);
   }
 
   ngOnInit(): void {
@@ -29,6 +30,7 @@ export class MemberListComponent implements OnInit {
 
   loadMembers() {
     if (this.userParams) {
+      console.log(this.userParams);
       this.memberService.setUserParams(this.userParams);
       this.memberService.getMembers(this.userParams).subscribe({
         next: response => {
