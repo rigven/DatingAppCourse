@@ -22,8 +22,6 @@ public class AppUser
     public List<UserLike> LikedByUser { get; set; }
     public List<UserLike> LikedUsers { get; set; }
 
-    // public int GetAge()
-    // {
-    //     return DateOfBirth.CalculateAge();
-    // }
+    public List<Message> MessagesSent { get; set; }
+    public List<Message> MessagesRecieved { get; set; }
 }
