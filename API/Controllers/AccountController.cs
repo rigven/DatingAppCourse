@@ -49,7 +49,7 @@ public class AccountController(DataContext context, ITokenService tokenService) 
 
         for (int i = 0; i < computedHash.Length; i++)
         {
-            if (computedHash[i] != user.PasswordHash[i]) return BadRequest("Invalid password");
+            if (computedHash[i] != user.PasswordHash[i]) return Unauthorized("Invalid password");
         }
 
         return new UserDto
