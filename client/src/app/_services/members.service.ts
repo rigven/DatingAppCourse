@@ -48,7 +48,7 @@ export class MembersService {
   getMember(username: string) {
     const member: Member = [...this.memberCache.values()]
       .reduce((arr, elem) => arr.concat(elem.body), [])
-      .find((m : Member) => m.userName === username);
+      .find((m : Member) => m.username === username);
 
     if (member) return of(member);
 
@@ -58,7 +58,7 @@ export class MembersService {
   updateMember(member: Member) {
     return this.http.put(this.baseUrl + 'users', member).pipe(
       // tap(()=>{
-      //   this.members.update(members => members.map(m => m.userName === member.userName ? member : m));
+      //   this.members.update(members => members.map(m => m.username === member.username ? member : m));
       // })
     );
   }

@@ -15,7 +15,7 @@ public class Message
 
     // navigation properties
     public int SenderId { get; set; }
-    public AppUser Sender { get; set; } = null;
+    public AppUser Sender { get; set; } = null!;
     public int RecipientId { get; set; }
-    public AppUser Recipient { get; set; } = null;
+    public AppUser Recipient { get; set; } = null!;
 }

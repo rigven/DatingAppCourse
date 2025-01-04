@@ -60,7 +60,7 @@ export class MemberDetailComponent implements OnInit{
   onTabActivated(data: TabDirective) {
     this.activeTab = data;
     if (this.activeTab.heading === 'Messages' && this.messages.length === 0 && this.member) {
-      this.messageService.getMessageThread(this.member.userName).subscribe({
+      this.messageService.getMessageThread(this.member.username).subscribe({
         next: messages => this.messages = messages
       })
     }
