@@ -99,7 +99,7 @@ namespace API.Data.Migrations
                     b.Property<int>("RecipientId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("RecipientUsername")
+                    b.Property<string>("RecipientUserName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -109,7 +109,7 @@ namespace API.Data.Migrations
                     b.Property<int>("SenderId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("SenderUsername")
+                    b.Property<string>("SenderUserName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

@@ -4,6 +4,6 @@ namespace API.Helpers;
 
 public class MessageParams : PaginationParams
 {
-    public string? Username { get; set; }
+    public string? UserName { get; set; }
     public string Container { get; set; } = "Default";
 }

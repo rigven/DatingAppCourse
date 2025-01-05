@@ -18,11 +18,11 @@ public class AccountController(UserManager<AppUser> userManager, ITokenService t
     [HttpPost("register")]
     public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
     {
-        if (await UserExists(registerDto.Username)) return BadRequest("Username is taken");
+        if (await UserExists(registerDto.UserName)) return BadRequest("UserName is taken");
 
         var user = mapper.Map<AppUser>(registerDto);
 
-        user.UserName = registerDto.Username.ToLower();
+        user.UserName = registerDto.UserName.ToLower();
 
         var result = await userManager.CreateAsync(user, registerDto.Password);
 
@@ -42,9 +42,9 @@ public class AccountController(UserManager<AppUser> userManager, ITokenService t
     {
         var user = await userManager.Users
             .Include(p => p.Photos)
-            .FirstOrDefaultAsync(u => u.NormalizedUserName == loginDto.Username.ToUpper());
+            .FirstOrDefaultAsync(u => u.NormalizedUserName == loginDto.UserName.ToUpper());
 
-        if (user == null || user.UserName == null) return Unauthorized("Invalid username");
+        if (user == null || user.UserName == null) return Unauthorized("Invalid userName");
 
         return new UserDto
         {
@@ -56,9 +56,9 @@ public class AccountController(UserManager<AppUser> userManager, ITokenService t
         };
     }
 
-    private async Task<bool> UserExists(string username)
+    private async Task<bool> UserExists(string userName)
     {
-        return await userManager.Users.AnyAsync(u => u.NormalizedUserName == username.ToUpper());
+        return await userManager.Users.AnyAsync(u => u.NormalizedUserName == userName.ToUpper());
     }
 
 }

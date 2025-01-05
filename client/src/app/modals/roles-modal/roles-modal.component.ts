@@ -10,7 +10,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 })
 export class RolesModalComponent {
   bsModalRef = inject(BsModalRef);
-  username = '';
+  userName = '';
   title = '';
   availableRoles: string[] = [];
   selectedRoles: string[] = [];

@@ -38,7 +38,7 @@
                                     : (message.senderPhotoUrl || './assets/user.png')" 
                                 alt="image of user"
                                 class="rounded-circle me-2">
-                            <strong>{{isOutbox ? message.recipientUsername : message.senderUsername}}</strong>
+                            <strong>{{isOutbox ? message.recipientUserName : message.senderUserName}}</strong>
                         </div>
                     </td>
                     <td>{{message.messageSent | timeago}}</td>

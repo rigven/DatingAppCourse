@@ -38,10 +38,10 @@
 
         @if (!accountService.currentUser()){
             <form #loginForm="ngForm" (ngSubmit)="login()" class="d-flex" autocomplete="off">
-                <input name="username" 
-                    [(ngModel)]="model.username" 
+                <input name="userName" 
+                    [(ngModel)]="model.userName" 
                     class="form-control me-2" 
-                    placeholder="Username">
+                    placeholder="UserName">
                 <input name="password"
                     [(ngModel)]="model.password"
                     class="form-control me-2" 

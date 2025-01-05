@@ -13,7 +13,7 @@
                 [checked]="selectedRoles.includes(role)"
                 value="role"
                 (change)="updateChecked(role)"
-                [disabled]="role === 'Admin' && username === 'Admin'"
+                [disabled]="role === 'Admin' && userName === 'Admin'"
             >
             <label>{{role}}</label>
         </div>

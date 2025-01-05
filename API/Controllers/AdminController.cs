@@ -18,7 +18,7 @@ public class AdminController(UserManager<AppUser> userManager) : BaseApiControll
             .Select(x => new 
             {
                 x.Id,
-                Username = x.UserName,
+                UserName = x.UserName,
                 Roles = x.UserRoles.Select(r => r.Role.Name).ToList()
             }).ToListAsync();
 
@@ -26,14 +26,14 @@ public class AdminController(UserManager<AppUser> userManager) : BaseApiControll
     }
 
     [Authorize(Policy = "RequireAdminRole")]
-    [HttpPost("edit-roles/{username}")]
-    public async Task<ActionResult> EditRoles(string username, string roles)
+    [HttpPost("edit-roles/{userName}")]
+    public async Task<ActionResult> EditRoles(string userName, string roles)
     {
         if (string.IsNullOrEmpty(roles)) return BadRequest("You must select at least one role");
 
         var selectedRoles = roles.Split(",").ToArray();
 
-        var user = await userManager.FindByNameAsync(username);
+        var user = await userManager.FindByNameAsync(userName);
 
         if (user == null) return BadRequest("User not found");
 

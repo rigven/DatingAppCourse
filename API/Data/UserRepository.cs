@@ -11,10 +11,10 @@ namespace API.Data;
 
 public class UserRepository(DataContext context, IMapper mapper) : IUserRepository
 {
-    public async Task<MemberDto?> GetMemberAsync(string username)
+    public async Task<MemberDto?> GetMemberAsync(string userName)
     {
         return await context.Users
-            .Where(u => u.UserName == username)
+            .Where(u => u.UserName == userName)
             .ProjectTo<MemberDto>(mapper.ConfigurationProvider)
             .SingleOrDefaultAsync();
     }
@@ -23,7 +23,7 @@ public class UserRepository(DataContext context, IMapper mapper) : IUserReposito
     {
         var query = context.Users.AsQueryable();
 
-        query = query.Where(x => x.UserName != userParams.CurrentUsername);
+        query = query.Where(x => x.UserName != userParams.CurrentUserName);
 
         query = userParams.OrderBy switch
         {
@@ -49,11 +49,11 @@ public class UserRepository(DataContext context, IMapper mapper) : IUserReposito
         return await context.Users.FindAsync(id);
     }
 
-    public async Task<AppUser?> GetUserByUsernameAsync(string username)
+    public async Task<AppUser?> GetUserByUserNameAsync(string userName)
     {
         return await context.Users
             .Include(u => u.Photos)
-            .SingleOrDefaultAsync(u => u.UserName == username);
+            .SingleOrDefaultAsync(u => u.UserName == userName);
     }
 
     public async Task<IEnumerable<AppUser>> GetUsersAsync()
